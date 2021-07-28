@@ -1,5 +1,4 @@
-export OAK_SQLITE_FILE=_testdb.db 
-trex run removedb
+export OAK_SQLITE_FILE=_testdb.db  
 trex run copydb
 trex run test
  

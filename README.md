@@ -1,62 +1,60 @@
-# oak-sqlite-simple-todo
+# oak-sqlite-todo-multiple-users
 in this example you will see : <br>
-- how serve static site in given directory using oak <br>
 - how config db connexion (sqlite as example) in scalable way <br>
 - retrive data from posted data <br>
 - respond to user request with json data <br>
-- and more
+- authentificate user
+- test rest api
+- rest api doc based on ts instead of swagger ui
 # requirement
 deno cli installed
+trex cli intalled (from deno.land/x modules)
 # init db
 you need to create table by running
 ```
-deno run --allow-all cli.ts
+trex run initdb 
 ```
-# how to use 
 init db (only one time) <br>
-
+# how to use 
 just clone this reposetory in you local machine and run this <br>
 ```
-deno run --allow-all run.ts
+trex run start
 ```
-then open todo app in browser  <br>
-http://localhost:8080/ <br>
-you will see screen like this:<br>
-<image src="./src/oak-simpletodo.png"> <br>
- then you can inteact with todo using this inteface.<br>
+then you can interact with this app by one the code in /doc-rest-api
 
- # run deno test for this project on linux and mac
+ # run test on linux/mac
 in terminal
 ```
 export OAK_SQLITE_FILE=_testdb.db 
-deno run --allow-all cli.ts
-deno run --allow-all run.ts
+trex run start 
 ```
 open new tab in your terminal and run
 ```
- cd src && deno test --allow-all   tests/api.test.ts
+export OAK_SQLITE_FILE=_testdb.db  
+trex run copydb
+trex run test
 ```
 
- # run deno test for this project on winows
+ # run test on windows
 in terminal
 ```
 set OAK_SQLITE_FILE=_testdb.db 
-deno run --allow-all run.ts
-deno run --allow-all run.ts
+trex run start 
 ```
 open new tab in your terminal and run
 ```
- cd src && deno test --allow-all   tests/api.test.ts
+set OAK_SQLITE_FILE=_testdb.db  
+trex run copydb
+trex run test
 ```
-
-
-# automatic test running in brwser
-read ./client-test/readme.md
-<hr />
-<image src="./client-test/oak-fetch-bowser-test.png">
 
 # inspiration 
 this project try to port best pratic and philosophie in django/flask/foalts framework to oak in progress 
 
-# limittion
-sqlite can't be out side src directory
+# goal
+- this example is for make easy to start learning backend in deno ecosystem
+- inspiration for building foalts/django-rest-framwork equivant in deno ecosystem
+
+# why sqlite db ?
+
+make project portable and easy to run without config
